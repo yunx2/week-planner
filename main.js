@@ -8,6 +8,7 @@ const $daySelect = document.querySelector('.day-select');
 const $timeSelect = document.querySelector('.time-select');
 const $description = document.querySelector('.description');
 const $buttons = document.querySelector('.buttons');
+const $scheduleHeader = document.querySelector('.schedule-header');
 
 $addEntry.addEventListener('click', () => {
   $entryFormModal.showModal();
@@ -18,7 +19,12 @@ $submitBtn.addEventListener('click', () => {
 });
 
 $buttons.addEventListener('click', (event) => {
-  console.log('target', event.target)
+  if (!event.target.tagName === 'BUTTON') {
+    return;
+  }
+  $scheduleHeader.textContent = 'Scheduled Events for ' + event.target.innerHTML;
+    console.log('event.target.text', event.target.innerHTML)
+
 });
 
 function handleSubmit(e) {
