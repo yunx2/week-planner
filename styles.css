@@ -1,0 +1,11 @@
+.row {
+  display: flex;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.page-header {
+  text-align: center;
+}
