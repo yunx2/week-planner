@@ -14,14 +14,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="column-full flex-container spaced-evenly">
-        <button type="button" class="days-button background-white button-border">Sunday</button>
-        <button type="button" class="days-button background-white button-border">Monday</button>
-        <button type="button" class="days-button background-white button-border">Tuesday</button>
-        <button type="button" class="days-button background-white button-border">Wednesday</button>
-        <button type="button" class="days-button background-white button-border">Thursday</button>
-        <button type="button" class="days-button background-white button-border">Friday</button>
-        <button type="button" class="days-button background-white button-border">Saturday</button>
+      <div class="buttons column-full flex-container spaced-evenly">
+        <button type="button" class="sun-button days-button background-white button-border">Sunday</button>
+        <button type="button" class="mon-button days-button background-white button-border">Monday</button>
+        <button type="button" class="tue-button days-button background-white button-border">Tuesday</button>
+        <button type="button" class="wed-button days-button background-white button-border">Wednesday</button>
+        <button type="button" class="thu-button days-button background-white button-border">Thursday</button>
+        <button type="button" class="fri-button days-button background-white button-border">Friday</button>
+        <button type="button" class="sat-button days-button background-white button-border">Saturday</button>
       </div>
     </div>
     <div class="row">
@@ -30,71 +30,76 @@
       </div>
     </div>
     <dialog class="add-entry-modal">
-        <form class="entry-form">
-          <div class="row">
-            <div class="column-full">
-              <h1 class="entry-form-header">Add Entry</h1>
-            </div>
+      <form class="entry-form">
+        <div class="row">
+          <div class="column-full">
+            <h1 class="entry-form-header">Add Entry</h1>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="column-full space-rows ">
-              <select class="day-select">
-                <option>Day of the Week</option>
-                <option value="monday">Monday</option>
-                <option value="tuesday">Tuesday</option>
-                <option value="wednesday">Wednesday</option>
-                <option value="thursday">Thursday</option>
-                <option value="friday">Friday</option>
-                <option value="saturday">Saturday</option>
-                <option value="sunday">Sunday</option>
-              </select>
+        <div class="row">
+          <div class="column-full space-rows ">
+            <select class="day-select">
+              <option>Day of the Week</option>
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+              <option value="sunday">Sunday</option>
+            </select>
 
-              <select class="time-select">
-                <option>Time</option>
-                <option value="0">0:00</option>
-                <option value="1">1:00</option>
-                <option value="2">2:00</option>
-                <option value="3">3:00</option>
-                <option value="4">4:00</option>
-                <option value="5">5:00</option>
-                <option value="6">6:00</option>
-                <option value="7">7:00</option>
-                <option value="8">8:00</option>
-                <option value="9">9:00</option>
-                <option value="10">10:00</option>
-                <option value="11">11:00</option>
-                <option value="12">12:00</option>
-                <option value="13">13:00</option>
-                <option value="14">14:00</option>
-                <option value="15">15:00</option>
-                <option value="16">16:00</option>
-                <option value="17">17:00</option>
-                <option value="18">18:00</option>
-                <option value="19">19:00</option>
-                <option value="20">20:00</option>
-                <option value="21">21:00</option>
-                <option value="22">22:00</option>
-                <option value="23">23:00</option>
-                <option value="24">24:00</option>
-              </select>
-            </div>
+            <select class="time-select">
+              <option>Time</option>
+              <option value="0">0:00</option>
+              <option value="1">1:00</option>
+              <option value="2">2:00</option>
+              <option value="3">3:00</option>
+              <option value="4">4:00</option>
+              <option value="5">5:00</option>
+              <option value="6">6:00</option>
+              <option value="7">7:00</option>
+              <option value="8">8:00</option>
+              <option value="9">9:00</option>
+              <option value="10">10:00</option>
+              <option value="11">11:00</option>
+              <option value="12">12:00</option>
+              <option value="13">13:00</option>
+              <option value="14">14:00</option>
+              <option value="15">15:00</option>
+              <option value="16">16:00</option>
+              <option value="17">17:00</option>
+              <option value="18">18:00</option>
+              <option value="19">19:00</option>
+              <option value="20">20:00</option>
+              <option value="21">21:00</option>
+              <option value="22">22:00</option>
+              <option value="23">23:00</option>
+              <option value="24">24:00</option>
+            </select>
           </div>
+        </div>
 
-          <div class="row space-rows ">
-            <div class="column-full flex-container justify-center">
-              <textarea name="description" rows="6" placeholder="Description" class="description"></textarea>
-            </div>
+        <div class="row space-rows ">
+          <div class="column-full flex-container justify-center">
+            <textarea name="description" rows="6" placeholder="Description" class="description"></textarea>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="column-full flex-container justify-end">
-              <button type="submit" class="box-shadow btn-submit background-white">Submit</button>
-            </div>
+        <div class="row">
+          <div class="column-full flex-container justify-end">
+            <button type="submit" class="box-shadow btn-submit background-white">Submit</button>
           </div>
-        </form>
+        </div>
+      </form>
 
-      </dialog>
+    </dialog>
+    <div class="row">
+      <div class="column-full">
+        <h3 class="schedule-header"></h3>
+      </div>
+    </div>
   </div>
   <script src="data.js"></script>
   <script src="main.js"></script>

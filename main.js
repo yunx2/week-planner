@@ -7,9 +7,18 @@ const $entryForm = document.querySelector('.entry-form');
 const $daySelect = document.querySelector('.day-select');
 const $timeSelect = document.querySelector('.time-select');
 const $description = document.querySelector('.description');
+const $buttons = document.querySelector('.buttons');
 
 $addEntry.addEventListener('click', () => {
   $entryFormModal.showModal();
+});
+
+$submitBtn.addEventListener('click', () => {
+  $entryFormModal.close();
+});
+
+$buttons.addEventListener('click', (event) => {
+  console.log('target', event.target)
 });
 
 function handleSubmit(e) {
@@ -31,6 +40,8 @@ function handleSubmit(e) {
     entryId: data.nextEntryId - 1
   };
   data.entries[selectedDayValue].push(entry);
+  data.nextEntryId++;
+  $entryForm.reset();
   // console.log(entry);
 }
 
