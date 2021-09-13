@@ -29,6 +29,45 @@
         <button type="button" class="add-entry background-white button-border box-shadow">Add Entry</button>
       </div>
     </div>
+    <dialog class="add-entry-modal">
+        <form>
+          <div class="row">
+            <div class="column-full">
+              <h1 class="entry-form-header">Add Entry</h1>
+            </div>
+          </div>
+          <div class="row">
+            <select>
+              <option>Day of the Week</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+              <option>Sunday</option>
+            </select>
+
+            <select>
+              <option>Time</option>
+              <option>0:00</option>
+              <option>1:00</option>
+              <option>2:00</option>
+              <option>3:00</option>
+              <option>4:00</option>
+            </select>
+
+          </div>
+          <div class="row">
+            <textarea placeholder="Description"></textarea>
+          </div>
+
+          <div class="row">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+
+      </dialog>
   </div>
   <script src="main.js"></script>
 </body>

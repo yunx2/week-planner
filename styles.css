@@ -34,12 +34,6 @@
   border: solid 2px black;
 }
 
-.add-entry {
-  height: 30px;
-  width: 150px;
-  margin: 30px 0;
-}
-
 .background-white {
   background-color: white;
 }
@@ -54,5 +48,19 @@
 
 button:hover {
   cursor: pointer;
-  background-color: gray;
+  background-color: gainsboro;
+}
+
+.add-entry {
+  height: 30px;
+  width: 150px;
+  margin: 30px 0;
+}
+
+.add-entry:hover {
+  background-color: skyblue;
+}
+
+.entry-form-header {
+  text-align: center;
 }
