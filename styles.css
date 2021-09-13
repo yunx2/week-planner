@@ -1,3 +1,9 @@
+
+.container {
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
 .row {
   display: flex;
 }
@@ -8,4 +14,25 @@
 
 .page-header {
   text-align: center;
+  padding-bottom: 15px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.text
+.spaced-evenly {
+  justify-content: space-evenly;
+}
+
+.days-button {
+  width: 90px;
+  height: 90px;
+  border: solid 2px black;
+  border-radius: 4px;
+}
+
+.add-entry {
+
 }
