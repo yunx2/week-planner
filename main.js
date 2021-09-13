@@ -13,19 +13,25 @@ $addEntry.addEventListener('click', () => {
 });
 
 function handleSubmit(e) {
-  preventDefault();
+  e.preventDefault();
   var selectedDayText = $daySelect.options[$daySelect.selectedIndex].text;
   var selectedTimeText = $timeSelect.options[$timeSelect.selectedIndex].text;
   var selectedDayValue = $daySelect.options[$daySelect.selectedIndex].value;
   const entryDescription = $entryForm.elements.description.value;
-  console.log('entryDescription', entryDescription)
-  // var entry = {
-  //   day: selectedDayText,
-  //   time: selectedTimeText,
-  //   description: '   ',
-  //   nextEntryId: data.nextEntryId,
-  //   entryId: data.nextEntryId - 1
-  // }
+  /* console.log('entryDescription', entryDescription);
+  console.log(selectedDayText);
+  console.log(selectedTimeText);
+  console.log(selectedDayValue); */
+
+  var entry = {
+    day: selectedDayText,
+    time: selectedTimeText,
+    description: entryDescription,
+    nextEntryId: data.nextEntryId,
+    entryId: data.nextEntryId - 1
+  };
+  data.entries[selectedDayValue].push(entry);
+  // console.log(entry);
 }
 
-$entryForm.addEventListener('submit', (e) => handleSubmit(e));
+$entryForm.addEventListener('submit', e => handleSubmit(e));
