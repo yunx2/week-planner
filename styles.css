@@ -64,3 +64,16 @@ button:hover {
 .entry-form-header {
   text-align: center;
 }
+
+.add-entry-modal {
+  height: 30%;
+  width: 50%;
+}
+
+.description {
+  width: 100%;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
