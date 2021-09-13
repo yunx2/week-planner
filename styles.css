@@ -21,7 +21,6 @@
   display: flex;
 }
 
-.text
 .spaced-evenly {
   justify-content: space-evenly;
 }
@@ -29,10 +28,31 @@
 .days-button {
   width: 90px;
   height: 90px;
+}
+
+.button-border {
   border: solid 2px black;
-  border-radius: 4px;
 }
 
 .add-entry {
+  height: 30px;
+  width: 150px;
+  margin: 30px 0;
+}
 
+.background-white {
+  background-color: white;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.box-shadow {
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: gray;
 }
