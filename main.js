@@ -18,12 +18,12 @@ $submitBtn.addEventListener('click', () => {
   $entryFormModal.close();
 });
 
-$buttons.addEventListener('click', (event) => {
+$buttons.addEventListener('click', event => {
   if (!event.target.tagName === 'BUTTON') {
     return;
   }
   $scheduleHeader.textContent = 'Scheduled Events for ' + event.target.innerHTML;
-    console.log('event.target.text', event.target.innerHTML)
+  console.log('event.target.text', event.target.innerHTML);
 
 });
 
@@ -52,3 +52,7 @@ function handleSubmit(e) {
 }
 
 $entryForm.addEventListener('submit', e => handleSubmit(e));
+
+function renderTable(event) {
+
+}
