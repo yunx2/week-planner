@@ -19,11 +19,15 @@ $submitBtn.addEventListener('click', () => {
 });
 
 $buttons.addEventListener('click', event => {
-  if (!event.target.tagName === 'BUTTON') {
+  if (event.target.tagName !== 'BUTTON') {
     return;
   }
   $scheduleHeader.textContent = 'Scheduled Events for ' + event.target.innerHTML;
-  console.log('event.target.text', event.target.innerHTML);
+
+  if (event.target.getAttribute('data-day')) {
+    var clickedDay = event.target.getAttribute('data-day');
+    var clickedDayArray = data.entries[clickedDay];
+  }
 
 });
 
@@ -53,6 +57,16 @@ function handleSubmit(e) {
 
 $entryForm.addEventListener('submit', e => handleSubmit(e));
 
-function renderTable(event) {
+function renderEntries(entry) {
+  var tableRow = document.createElement('tr');
 
+  var tableTime = document.createElement('td');
+  tableTime.textContent = entry.time;
+  tableRow.appendChild(tableTime);
+
+  var tableDescription = document.createElement('td');
+  tableDescription.textContent = entry.description;
+  tableRow.appendChild(tableDescription);
+
+  return tableRow;
 }

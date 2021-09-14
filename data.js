@@ -1,5 +1,6 @@
 /* exported data */
 // data.entries[selectedDayValue]
+// on click of day: data.entries[clickedDay]
 var data = {
   entries: {
     monday: [],
