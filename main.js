@@ -10,37 +10,32 @@ const $description = document.querySelector('.description');
 const $buttons = document.querySelector('.buttons');
 const $scheduleHeader = document.querySelector('.schedule-header');
 const $tbody = document.getElementById('tbody');
+
 $addEntry.addEventListener('click', () => {
   $entryFormModal.showModal();
 });
 
-$submitBtn.addEventListener('click', () => {
-  $entryFormModal.close();
-});
+function renderEvent(entry) {
+  var tableRow = document.createElement('tr');
+  var tableTime = document.createElement('td');
+  tableTime.textContent = entry.time;
+  tableRow.appendChild(tableTime);
+  var tableDescription = document.createElement('td');
+  tableDescription.textContent = entry.description;
+  tableRow.appendChild(tableDescription);
 
-$buttons.addEventListener('click', event => {
-  if (event.target.tagName !== 'BUTTON') {
-    return;
-  }
-  $scheduleHeader.textContent = 'Scheduled Events for ' + event.target.innerHTML;
+  return tableRow;
+}
 
-  if (event.target.getAttribute('data-day')) {
-    var clickedDay = event.target.getAttribute('data-day');
-    var clickedDayArray = data.entries[clickedDay];
-    clickedDayArray.forEach(entry => {
-      const $entry = renderEntries(entry);
-      console.log('$entry', $entry);
-      $tbody.appendChild($entry);
-    });
-  }
-});
 
 function handleSubmit(e) {
   e.preventDefault();
+  $entryFormModal.close();
   var selectedDayText = $daySelect.options[$daySelect.selectedIndex].text;
   var selectedTimeText = $timeSelect.options[$timeSelect.selectedIndex].text;
   var selectedDayValue = $daySelect.options[$daySelect.selectedIndex].value;
   const entryDescription = $entryForm.elements.description.value;
+  
   /* console.log('entryDescription', entryDescription);
   console.log(selectedDayText);
   console.log(selectedTimeText);
@@ -50,8 +45,7 @@ function handleSubmit(e) {
     day: selectedDayText,
     time: selectedTimeText,
     description: entryDescription,
-    nextEntryId: data.nextEntryId,
-    entryId: data.nextEntryId - 1
+    entryId: data.nextEntryId;
   };
   data.entries[selectedDayValue].push(entry);
   data.nextEntryId++;
@@ -59,18 +53,28 @@ function handleSubmit(e) {
   // console.log(entry);
 }
 
+// $submitBtn.addEventListener('click', () => {
+//   $entryFormModal.close();
+// });
+
 $entryForm.addEventListener('submit', e => handleSubmit(e));
 
-function renderEntries(entry) {
-  var tableRow = document.createElement('tr');
 
-  var tableTime = document.createElement('td');
-  tableTime.textContent = entry.time;
-  tableRow.appendChild(tableTime);
-
-  var tableDescription = document.createElement('td');
-  tableDescription.textContent = entry.description;
-  tableRow.appendChild(tableDescription);
-
-  return tableRow;
-}
+$buttons.addEventListener('click', event => {
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
+  if (event.target.textContent === data.display) {
+    return;
+  }
+  data.display = event.target.textContent;
+  $scheduleHeader.textContent = 'Scheduled Events for ' + event.target.textContent;
+  // console.log('event.target.textContent', event.target.textContent)
+  var clickedDay = event.target.getAttribute('data-day');
+  var clickedDayArray = data.entries[clickedDay];
+  clickedDayArray.forEach(entry => {
+    const $entry = renderEvent(entry);
+    // console.log('$entry', $entry);
+    $tbody.appendChild($entry);
+  });
+});

@@ -12,7 +12,8 @@ var data = {
     sunday: []
   },
   editing: null,
-  nextEntryId: 1
+  nextEntryId: 1,
+  display: null
 };
 // var entry = {
 //   day: '',
@@ -21,11 +22,12 @@ var data = {
 //   nextEntryId: data.nextEntryId,
 //   entryId: data.nextEntryId - 1
 // }
-
-var dataJSON = localStorage.getItem('data');
-if (dataJSON !== null) {
-  data = JSON.parse(dataJSON);
-}
+document.addEventListener('DOMContentLoaded', () => {
+  var dataJSON = localStorage.getItem('data');
+  if (dataJSON) {
+    data = JSON.parse(dataJSON);
+  }
+});
 
 window.addEventListener('beforeunload', function (event) {
   var dataJson = JSON.stringify(data);
