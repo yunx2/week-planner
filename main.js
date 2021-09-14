@@ -9,7 +9,7 @@ const $timeSelect = document.querySelector('.time-select');
 const $description = document.querySelector('.description');
 const $buttons = document.querySelector('.buttons');
 const $scheduleHeader = document.querySelector('.schedule-header');
-
+const $tbody = document.getElementById('tbody');
 $addEntry.addEventListener('click', () => {
   $entryFormModal.showModal();
 });
@@ -27,8 +27,12 @@ $buttons.addEventListener('click', event => {
   if (event.target.getAttribute('data-day')) {
     var clickedDay = event.target.getAttribute('data-day');
     var clickedDayArray = data.entries[clickedDay];
+    clickedDayArray.forEach(entry => {
+      const $entry = renderEntries(entry);
+      console.log('$entry', $entry);
+      $tbody.appendChild($entry);
+    });
   }
-
 });
 
 function handleSubmit(e) {
