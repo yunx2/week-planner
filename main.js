@@ -6,16 +6,55 @@ const $addModal = document.querySelector('dialog');
 const $addForm = document.getElementById('add-form');
 const $submitButton = document.querySelector('.btn-submit');
 const $buttonsContainer = document.querySelector('.buttons');
+const $schedule = document.getElementById('schedule');
+
+function createEventElement(event) {
+  const $row = document.createElement('tr');
+  const $time = document.createElement('td');
+  $time.textContent = event.time;
+  const $description = document.createElement('td');
+  $description.textContent = event.description;
+  $row.className = 'event-element';
+  $row.append($time, $description);
+  // console.log('$row element:', $row);
+  return $row;
+}
+function removePreviousEvents() {
+  const eventElementNodes = document.getElementsByClassName('event-element');
+  for (let i = 0; i < eventElementNodes.length; i++) {
+    const $node = eventElementNodes[i];
+    $node.remove();
+  }
+}
+
+function displayDay(events) {
+  removePreviousEvents();
+  events.forEach(e => {
+    const $event = createEventElement(e);
+    $schedule.append($event);
+  });
+}
 
 function handleClickDay({ target }) {
   if (target.tagName !== 'BUTTON') {
     return;
   }
   const day = target.getAttribute('data-day');
-  // console.log('data-entry value:', day)
+  // console.log('data-day value:', day)
   // console.log('target:', target)
   const dayEvents = data.events[day];
-  console.log('dayEvents:', dayEvents)
+  const $tableTitle = document.querySelector('.schedule-header');
+  $tableTitle.textContent = `Scheduled Events for ${target.textContent}`;
+  displayDay(dayEvents);
+  // console.log('dayEvents:', dayEvents)
+  // const $event = createEventElement({
+  //   day: 'saturday',
+  //   time: '10:00',
+  //   description: 'study js',
+  //   entryId: 6
+  // });
+  // console.log('$event:', $event)
+  // $schedule.append($event);
 }
 
 $buttonsContainer.addEventListener('click', e => handleClickDay(e));
