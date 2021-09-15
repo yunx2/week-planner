@@ -51,14 +51,14 @@ button:hover {
   background-color: gainsboro;
 }
 
-.add-entry {
+.btn-add-entry {
   height: 30px;
   width: 150px;
   margin: 30px 0;
 }
 
 .btn-submit:hover,
-.add-entry:hover {
+.btn-add-entry:hover {
   background-color: skyblue;
 }
 

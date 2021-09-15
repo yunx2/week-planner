@@ -1,80 +1,132 @@
 /* global data */
 /* exported data */
-const $addEntry = document.querySelector('.add-entry');
-const $entryFormModal = document.querySelector('dialog');
-const $submitBtn = document.querySelector('.btn-submit');
-const $entryForm = document.querySelector('.entry-form');
-const $daySelect = document.querySelector('.day-select');
-const $timeSelect = document.querySelector('.time-select');
-const $description = document.querySelector('.description');
-const $buttons = document.querySelector('.buttons');
-const $scheduleHeader = document.querySelector('.schedule-header');
-const $tbody = document.getElementById('tbody');
 
-$addEntry.addEventListener('click', () => {
-  $entryFormModal.showModal();
-});
+const $addEntryButton = document.querySelector('.btn-add-entry');
+const $addModal = document.querySelector('dialog');
+const $addForm = document.getElementById('add-form');
+const $submitButton = document.querySelector('.btn-submit');
+const $buttonsContainer = document.querySelector('.buttons');
 
-function renderEvent(entry) {
-  var tableRow = document.createElement('tr');
-  var tableTime = document.createElement('td');
-  tableTime.textContent = entry.time;
-  tableRow.appendChild(tableTime);
-  var tableDescription = document.createElement('td');
-  tableDescription.textContent = entry.description;
-  tableRow.appendChild(tableDescription);
-
-  return tableRow;
+function handleClickDay({ target }) {
+  if (target.tagName !== 'BUTTON') {
+    return;
+  }
+  const day = target.getAttribute('data-day');
+  // console.log('data-entry value:', day)
+  // console.log('target:', target)
+  const dayEvents = data.events[day];
+  console.log('dayEvents:', dayEvents)
 }
 
+$buttonsContainer.addEventListener('click', e => handleClickDay(e));
+$addEntryButton.addEventListener('click', () => {
+  // console.log('day select element value:', $addForm.elements['select-day'].value)
+  $addModal.showModal();
+});
 
-function handleSubmit(e) {
+function handleAdd(e) {
   e.preventDefault();
-  $entryFormModal.close();
-  var selectedDayText = $daySelect.options[$daySelect.selectedIndex].text;
-  var selectedTimeText = $timeSelect.options[$timeSelect.selectedIndex].text;
-  var selectedDayValue = $daySelect.options[$daySelect.selectedIndex].value;
-  const entryDescription = $entryForm.elements.description.value;
-  
-  /* console.log('entryDescription', entryDescription);
-  console.log(selectedDayText);
-  console.log(selectedTimeText);
-  console.log(selectedDayValue); */
-
-  var entry = {
-    day: selectedDayText,
-    time: selectedTimeText,
-    description: entryDescription,
-    entryId: data.nextEntryId;
+  // console.log('day select element value:', $addForm.elements['select-day'].value)
+  const newEvent = {
+    day: $addForm.elements['select-day'].value,
+    time: $addForm.elements['select-time'].value,
+    description: $addForm.elements.description.value,
+    entryId: data.nextEntryId
   };
-  data.entries[selectedDayValue].push(entry);
   data.nextEntryId++;
-  $entryForm.reset();
-  // console.log(entry);
+  const selectedDay = $addForm.elements['select-day'].value;
+  // data.events[$addForm.elements['select-day'].value].push(newEvent);
+  const events = data.events[selectedDay];
+  events.push(newEvent);
+  // console.log('selected day:', selectedDay);
+  // console.log('array of events for selected day:', dayEvents);
+  $addModal.close();
 }
 
-// $submitBtn.addEventListener('click', () => {
-//   $entryFormModal.close();
-// });
+$submitButton.addEventListener('click', e => handleAdd(e));
 
-$entryForm.addEventListener('submit', e => handleSubmit(e));
+/*  reset data in localstorage  */
 
+const empty = {
+  monday: [],
+  tuesday: [],
+  wednesday: [],
+  thursday: [],
+  friday: [],
+  saturday: [],
+  sunday: []
+};
 
-$buttons.addEventListener('click', event => {
-  if (event.target.tagName !== 'BUTTON') {
-    return;
+function setData(events = empty, nextEntryId = 1) {
+  data = {
+    events,
+    editing: null,
+    nextEntryId
+  };
+  window.location.reload();
+  // console.log('localStorage:', localStorage)
+}
+
+const monday = [
+  {
+    day: 'monday',
+    time: '20:00',
+    description: 'study js',
+    entryId: 1
   }
-  if (event.target.textContent === data.display) {
-    return;
+];
+
+const tuesday = [];
+
+const wednesday = [
+  {
+    day: 'wednesday',
+    time: '9:00',
+    description: 'study js',
+    entryId: 2
   }
-  data.display = event.target.textContent;
-  $scheduleHeader.textContent = 'Scheduled Events for ' + event.target.textContent;
-  // console.log('event.target.textContent', event.target.textContent)
-  var clickedDay = event.target.getAttribute('data-day');
-  var clickedDayArray = data.entries[clickedDay];
-  clickedDayArray.forEach(entry => {
-    const $entry = renderEvent(entry);
-    // console.log('$entry', $entry);
-    $tbody.appendChild($entry);
-  });
-});
+];
+
+const thursday = [
+  {
+    day: 'thursday',
+    time: '6:00',
+    description: 'study js',
+    entryId: 3
+  },
+  {
+    day: 'thursday',
+    time: '10:00',
+    description: 'study js',
+    entryId: 4
+  }
+];
+
+const friday = [];
+
+const saturday = [
+  {
+    day: 'saturday',
+    time: '6:00',
+    description: 'study js',
+    entryId: 5
+  },
+  {
+    day: 'saturday',
+    time: '10:00',
+    description: 'study js',
+    entryId: 6
+  }
+];
+
+const sunday = [];
+
+const testData = {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday
+}

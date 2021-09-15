@@ -2,7 +2,7 @@
 // data.entries[selectedDayValue]
 // on click of day: data.entries[clickedDay]
 var data = {
-  entries: {
+  events: {
     monday: [],
     tuesday: [],
     wednesday: [],
@@ -12,8 +12,7 @@ var data = {
     sunday: []
   },
   editing: null,
-  nextEntryId: 1,
-  display: null
+  nextEntryId: 1
 };
 // var entry = {
 //   day: '',
@@ -24,6 +23,7 @@ var data = {
 // }
 document.addEventListener('DOMContentLoaded', () => {
   var dataJSON = localStorage.getItem('data');
+  // console.log('data onload:', data)
   if (dataJSON) {
     data = JSON.parse(dataJSON);
   }
